@@ -29,15 +29,17 @@ namespace Task_Manager.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            var user = await userManager.FindByNameAsync(model.Username);
+            var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
 
-            if (user == null) return BadRequest(new
+            if (!result.Succeeded) return BadRequest(new
             {
-                result = "No user has found"
+                err = result.ToString()
             });
             return Ok(new
                 {
-                    token = await jwtTokenGenerator.GenerateJwtTokenString(user)
+                    token = await jwtTokenGenerator.GenerateJwtTokenString(
+                        await userManager.FindByNameAsync(model.Username)
+                    )
                 });
         }
 

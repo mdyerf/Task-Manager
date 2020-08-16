@@ -34,6 +34,11 @@ namespace Task_Manager
             services.AddIdentity<AppUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.Configure<IdentityOptions>(options => 
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                
+            });
             services.AddScoped<IJwtGenerator, JwtGenerator>(); 
 
             services.AddSpaStaticFiles(configuration =>
