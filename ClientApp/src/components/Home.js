@@ -25,7 +25,6 @@ class Home extends Component {
         });
     }
     componentDidMount() {
-        console.log(isAuthed())
         this.setState({
             isAuth: isAuthed()
         })

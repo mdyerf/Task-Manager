@@ -7,8 +7,9 @@ export function isAuthed() {
 }
 export function getUserId() {
     const token = localStorage.getItem('token');
+
     if(token) 
-        return jwt_decode(token).id;
+        return jwt_decode(token).nameid;
     else return null;
 }
 export function storeAndDecode(token) {

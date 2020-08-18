@@ -1,26 +1,42 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import {isAuthed, } from '../AuthCore';
+import {isAuthed, getUserId} from '../AuthCore';
+import LogOff from './LogOff';
+import DownloadApp from './DownloadApp';
+import HardwareDetails from './HardwareDetails.js';
 
 const Task = (props) =>  {
 
+    const [Info, setInfo] = useState({});
     const history = useHistory();
     
     if(!isAuthed()) history.push('/');
 
-    function logOff() {
-        localStorage.removeItem('token');
-        axios.get('api/Auth/logout')
-        history.push('/');
-    }
+    useEffect(() => {
 
-    axios.get('api/info/')
+        const id = getUserId();
+
+        axios.get(`api/Info/Get/${id}`)
+        .then(res => {
+            setInfo(res.data)
+        })
+
+    }, [])
+
+    console.log(Info)
     return (
-        <div>
-            HI it's TASK
-            <button onClick={logOff}>خروج</button>
-        </div>
+        <>
+            {
+                Info === '' &&
+                <DownloadApp />
+            }
+            {
+                Info !== '' &&
+                <HardwareDetails data={Info} />
+            }
+            <LogOff />
+        </>
     )
 }
 

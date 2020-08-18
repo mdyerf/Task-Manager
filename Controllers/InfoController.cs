@@ -7,7 +7,7 @@ using Task_Manager.Services;
 
 namespace Task_Manager.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{action?}")]
     [ApiController]
     [AllowAnonymous]
     public class InfoController : ControllerBase
@@ -17,7 +17,7 @@ namespace Task_Manager.Controllers
         {
             this.userManager = userManager;
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
             return Ok(userManager.GetUserHardwareInfo(id));
