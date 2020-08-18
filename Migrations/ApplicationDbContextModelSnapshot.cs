@@ -169,6 +169,9 @@ namespace Task_Manager.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("InfoId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -204,6 +207,8 @@ namespace Task_Manager.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InfoId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -213,6 +218,39 @@ namespace Task_Manager.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Task_Manager.Models.SystemHardware", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CpuModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CpuName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HddStorage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RamModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RamStorage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WindowsVersion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SystemHardware");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -264,6 +302,13 @@ namespace Task_Manager.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Task_Manager.Models.AppUser", b =>
+                {
+                    b.HasOne("Task_Manager.Models.SystemHardware", "Info")
+                        .WithMany()
+                        .HasForeignKey("InfoId");
                 });
 #pragma warning restore 612, 618
         }

@@ -14,5 +14,6 @@ namespace Task_Manager.Models
             this.Email = model.Email;
             this.UserName = model.Username;
         }
+        public virtual SystemHardware Info { get; set; }
     }
 }

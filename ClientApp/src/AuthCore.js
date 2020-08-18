@@ -5,6 +5,12 @@ export function isAuthed() {
     if(!isLog) axios.get('api/Auth/logout');
     return isLog;
 }
+export function getUserId() {
+    const token = localStorage.getItem('token');
+    if(token) 
+        return jwt_decode(token).id;
+    else return null;
+}
 export function storeAndDecode(token) {
     localStorage.setItem('token', token);
     return jwt_decode(token);

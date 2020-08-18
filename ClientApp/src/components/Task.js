@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import {isAuthed} from '../AuthCore';
+import {isAuthed, } from '../AuthCore';
 
 const Task = (props) =>  {
 
@@ -15,6 +15,7 @@ const Task = (props) =>  {
         history.push('/');
     }
 
+    axios.get('api/info/')
     return (
         <div>
             HI it's TASK

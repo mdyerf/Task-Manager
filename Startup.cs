@@ -39,6 +39,8 @@ namespace Task_Manager
                 options.SignIn.RequireConfirmedAccount = false;
                 
             });
+
+            services.AddScoped<IUser, User>();
             services.AddScoped<IJwtGenerator, JwtGenerator>(); 
 
             services.AddSpaStaticFiles(configuration =>
