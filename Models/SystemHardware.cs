@@ -11,8 +11,8 @@ namespace Task_Manager.Models
         public string CpuName { get; set; }
         public string CpuModel { get; set; }
         public string RamModel { get; set; }
-        public int RamStorage { get; set; }
-        public int HddStorage { get; set; }
+        public string RamStorage { get; set; }
+        public string HddStorage { get; set; }
         public string UserId { get; set; }
     }
 }

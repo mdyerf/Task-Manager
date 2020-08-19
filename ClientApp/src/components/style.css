@@ -1,0 +1,55 @@
+html {
+    font-family:'shabnam';
+}
+.layout{
+    background-image: url(../backg.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+}
+.box{
+    background-color: white;
+    border-radius: 10px;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    left: 60%;
+    top: 10%;
+}
+.home{
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 5px;
+}
+.tab {
+    width: 50%;
+    position: absolute;
+    left: 0;
+    align-items: center;
+}
+.formText {
+    margin: 1rem;
+    border-radius: 2px;
+    width: 70%;
+    font-size: xx-large;
+    text-align: center;
+}
+.submit {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #008010;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    border-radius: 10px;
+}

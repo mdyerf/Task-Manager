@@ -44,11 +44,13 @@ const LoginFrom = (props) => {
     }
     return (
         <form>
-            <input type='email' placeholder='ایمیل' onChange={onEmailChange}/>
-            <input type='text' placeholder='نام کاربری' onChange={onUsernameChange}/>
-            <input type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/>
-            <input type='password' placeholder='تایید کلمه ی عبور' onChange={onConfirmPasswordChange}/>
-            <CheckIcon onClick={handleSubmit}/>
+            <input className="formText" type='email' placeholder='ایمیل' onChange={onEmailChange}/>
+            <input className="formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/>
+            <input className="formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/>
+            <input className="formText" type='password' placeholder='تایید کلمه ی عبور' onChange={onConfirmPasswordChange}/>
+            <div className="btn btn-success submit" onClick={handleSubmit}>
+                <h1 style={{'position':'absolute','top':'25%', 'left':'40%'}}>{">>>"}</h1>
+            </div>
             <p id='err'></p>
         </form>
     )

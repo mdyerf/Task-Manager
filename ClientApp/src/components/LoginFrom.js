@@ -5,6 +5,8 @@ import axios from 'axios';
 import $ from 'jquery';
 import {storeAndDecode} from '../AuthCore';
 
+import './style.css';
+
 const LoginFrom = (props) => {
 
     const [Username, setUsername] = useState('');
@@ -32,9 +34,11 @@ const LoginFrom = (props) => {
     }
     return (
         <form>
-            <input type='text' placeholder='نام کاربری' onChange={onUsernameChange}/>
-            <input type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/>
-            <CheckIcon onClick={handleSubmit}/>
+            <input className="formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/><br/>
+            <input className="formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/><br/>
+            <div className="btn btn-success submit" onClick={handleSubmit}>
+                <h1 style={{'position':'absolute','top':'25%', 'left':'40%'}}>{">>>"}</h1>
+            </div>
             <p id='err'></p>
         </form>
     )

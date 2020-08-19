@@ -7,6 +7,8 @@ import SignInForm from './SignInFrom';
 import {isAuthed} from  '../AuthCore';
 import Task from './Task';
 
+import './style.css';
+
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -32,10 +34,10 @@ class Home extends Component {
     render() {
         if(!this.state.isAuth)
             return (
-                <div>
+                <div className="container home">
                     <Tabs value={this.state.tabValue} onChange={this.handleChange}>
-                        <Tab label="ورود" />
-                        <Tab label="ثبت نام" />
+                        <Tab className="container tab" label="ورود" />
+                        <Tab className="container tab" label="ثبت نام" />
                     </Tabs>
                     <TabPanel value={this.state.tabValue} index={0}>
                         <LoginForm />

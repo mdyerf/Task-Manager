@@ -6,7 +6,11 @@ function DownloadApp() {
             <p>there is no information about your system in our database</p>
             <p>please download our app to send us your data</p>
             <p>trust me :))</p>
-            <button>download</button>
+            <a href={"http://s000.tinyupload.com/?file_id=80714589853407229486"} 
+                rel="noreferrer" target="_blank"
+            >
+                download
+            </a>
         </div>
     )
 }
