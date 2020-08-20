@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import CheckIcon from '@material-ui/icons/Check';
 import axios from 'axios';
 import $ from 'jquery';
 import {storeAndDecode} from '../AuthCore';
@@ -14,6 +13,10 @@ const LoginFrom = (props) => {
     const history = useHistory();
 
     function handleSubmit() {
+        if(Username === '' || Password === '') {
+            $('#err').html('تمامی موارد باید پر بشود')
+            return;
+        }
         axios.post('api/Auth/login', {
             Username: Username, 
             Password: Password
@@ -34,8 +37,8 @@ const LoginFrom = (props) => {
     }
     return (
         <form>
-            <input className="formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/><br/>
-            <input className="formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/><br/>
+            <input className="form-control formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/><br/>
+            <input className="form-control formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/><br/>
             <div className="btn btn-success submit" onClick={handleSubmit}>
                 <h1 style={{'position':'absolute','top':'25%', 'left':'40%'}}>{">>>"}</h1>
             </div>

@@ -233,14 +233,14 @@ namespace Task_Manager.Migrations
                     b.Property<string>("CpuName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HddStorage")
-                        .HasColumnType("int");
+                    b.Property<string>("HddStorage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RamModel")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RamStorage")
-                        .HasColumnType("int");
+                    b.Property<string>("RamStorage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
@@ -250,7 +250,7 @@ namespace Task_Manager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SystemHardware");
+                    b.ToTable("Informations");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

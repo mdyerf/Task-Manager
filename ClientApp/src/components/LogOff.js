@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
+import './style.css';
+
 function LogOff() {
 
     const history = useHistory();
@@ -14,7 +16,7 @@ function LogOff() {
 
     return (
         <div>
-            <button onClick={logOff}>خروج</button>
+            <button className="btn btn-danger submit" onClick={logOff}>{'<<<'}</button>
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import CheckIcon from '@material-ui/icons/Check';
 import axios from 'axios';
 import $ from 'jquery';
 import {storeAndDecode} from '../AuthCore';
@@ -14,6 +13,10 @@ const LoginFrom = (props) => {
     const history = useHistory();
 
     function handleSubmit() {
+        if(Username === '' || Password === '' || Email === '') {
+            $('#err').html('تمامی موارد باید پر بشود')
+            return;
+        }
         if(ConfirmPass === Password)
             axios.post('api/Auth/register', {
                 Username: Username,
@@ -44,10 +47,10 @@ const LoginFrom = (props) => {
     }
     return (
         <form>
-            <input className="formText" type='email' placeholder='ایمیل' onChange={onEmailChange}/>
-            <input className="formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/>
-            <input className="formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/>
-            <input className="formText" type='password' placeholder='تایید کلمه ی عبور' onChange={onConfirmPasswordChange}/>
+            <input className="form-control formText" type='email' placeholder='ایمیل' onChange={onEmailChange}/>
+            <input className="form-control formText" type='text' placeholder='نام کاربری' onChange={onUsernameChange}/>
+            <input className="form-control formText" type='password' placeholder='کلمه ی عبور' onChange={onPasswordChange}/>
+            <input className="form-control formText" type='password' placeholder='تایید کلمه ی عبور' onChange={onConfirmPasswordChange}/>
             <div className="btn btn-success submit" onClick={handleSubmit}>
                 <h1 style={{'position':'absolute','top':'25%', 'left':'40%'}}>{">>>"}</h1>
             </div>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Task_Manager.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +22,7 @@ namespace Task_Manager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SystemHardware",
+                name: "Informations",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -31,13 +31,13 @@ namespace Task_Manager.Migrations
                     CpuName = table.Column<string>(nullable: true),
                     CpuModel = table.Column<string>(nullable: true),
                     RamModel = table.Column<string>(nullable: true),
-                    RamStorage = table.Column<int>(nullable: false),
-                    HddStorage = table.Column<int>(nullable: false),
+                    RamStorage = table.Column<string>(nullable: true),
+                    HddStorage = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SystemHardware", x => x.Id);
+                    table.PrimaryKey("PK_Informations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,9 +86,9 @@ namespace Task_Manager.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_SystemHardware_InfoId",
+                        name: "FK_AspNetUsers_Informations_InfoId",
                         column: x => x.InfoId,
-                        principalTable: "SystemHardware",
+                        principalTable: "Informations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -247,7 +247,7 @@ namespace Task_Manager.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "SystemHardware");
+                name: "Informations");
         }
     }
 }

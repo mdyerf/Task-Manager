@@ -28,6 +28,6 @@ namespace Task_Manager.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
-        public DbSet<SystemHardware> Informations;
+        public DbSet<SystemHardware> Informations {get; set;}
     }
 }

@@ -24,7 +24,6 @@ const Task = (props) =>  {
 
     }, [])
 
-    console.log(Info)
     return (
         <>
             {

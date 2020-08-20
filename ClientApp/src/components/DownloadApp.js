@@ -1,16 +1,19 @@
 import React from 'react';
 
+import './style.css';
+
 function DownloadApp() {
     return (
-        <div>
-            <p>there is no information about your system in our database</p>
-            <p>please download our app to send us your data</p>
-            <p>trust me :))</p>
+        <div className="container home" >
+            <p className="text" >اطلاعاتی از سیستم شما در دیتابیس موجود نیست</p>
+            <p className="text" >برای ارسال اطلاعات سیستم برنامه ی زیر را دانلود و اجرا کنید</p>
+
             <a href={"http://s000.tinyupload.com/?file_id=80714589853407229486"} 
                 rel="noreferrer" target="_blank"
             >
-                download
+                دریافت برنامه
             </a>
+            <p className="text">پس از اجرای برنامه صفحه را refresh کنید</p>
         </div>
     )
 }

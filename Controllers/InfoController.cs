@@ -13,21 +13,40 @@ namespace Task_Manager.Controllers
     public class InfoController : ControllerBase
     {
         private readonly IUser userManager;
-        public InfoController(IUser userManager)
+        private readonly UserManager<AppUser> _userInfoManager;
+        public InfoController(IUser userManager, UserManager<AppUser> userInfoManager)
         {
             this.userManager = userManager;
+            _userInfoManager = userInfoManager;
         }
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
             return Ok(userManager.GetUserHardwareInfo(id));
         }
+        [AllowAnonymous]
         [HttpPost]
-        public IActionResult Post(SystemHardware info)
+        public IActionResult PostInfo(string username, string windowsVersion, 
+            string cpuName, string cpuModel,
+            string ramStorage, string ramModel, string hddStorage)
         {
+            var info = new SystemHardware() 
+            {
+                WindowsVersion = windowsVersion,
+                CpuName = cpuName, CpuModel = cpuModel,
+                RamModel = ramModel, RamStorage = ramStorage,
+                HddStorage = hddStorage
+            };
+
+            info.UserId = _userInfoManager.GetUserIdAsync(
+                _userInfoManager.FindByNameAsync(username).Result
+            ).Result;
+            
+            if(info.UserId == null) return BadRequest();
+
             userManager.SetUserHardwareInfo(info);
             userManager.Save();
-            
+
             return Ok();
         }
 
