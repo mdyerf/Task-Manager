@@ -26,7 +26,7 @@ const LoginFrom = (props) => {
                 history.push('/task');
             })
             .catch(err => {
-                $('#err').html('نام کاربری یافت نشد!')
+                $('#err').html('نام کاربری یا کلمه ی عبور نادرست است!')
             });
     }
     function onUsernameChange(eve) {

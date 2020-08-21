@@ -10,7 +10,7 @@ function HardwareDetails({data}) {
             <h6>پردازنده نوع {data.cpuModel}</h6>
             <h5>ظرفیت حافظه (RAM) : {data.ramStorage}</h5>
             <h5>مدل حافظه (RAM) : {data.ramModel}</h5>
-            <h5>فضای خالی دیسک سخت (Hard Disk Drive) : {data.hddStorage}</h5>
+            <h5>فضای کل دیسک سخت (Hard Disk Drive) : {data.hddStorage}</h5>
         </div>
     )
 }
